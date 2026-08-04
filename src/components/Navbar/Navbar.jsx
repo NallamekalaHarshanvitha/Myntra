@@ -48,6 +48,7 @@ function Navbar({ search, setSearch }) {
               <p>Boys Clothing</p>
               <p>Girls Clothing</p>
               <p>Accessories</p>
+              <p>Toys</p>
             </div>
           </div>
         </li>
