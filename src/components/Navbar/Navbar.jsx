@@ -93,8 +93,10 @@ function Navbar({ search, setSearch }) {
       <div className="icons">
  
         <div className="icon">
-          <FaUser />
-          <span>Profile</span>
+          <Link to="/profile" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: "8px" }}>
+            <FaUser />
+            <span>Profile</span>
+          </Link>
         </div>
  
         <div className="icon">
