@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-function product() {
+function ContactForm() {
+  const [name, setName] = useState("");
+
+  function submit(e) {
+    e.preventDefault();
+    alert(name);
+  }
+
   return (
-    <div>product</div>
-  )
+    <form onSubmit={submit}>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <button type="submit">Submit</button>
+    </form>
+  );
 }
 
-export default product
+export default ContactForm;
