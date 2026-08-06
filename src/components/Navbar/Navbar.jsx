@@ -1,8 +1,18 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
  
 function Navbar({ search, setSearch }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+ 
+  const handleSearchChange = (value) => {
+    setSearch(value);
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+  };
+ 
   return (
     <nav className="navbar">
  
@@ -86,7 +96,7 @@ function Navbar({ search, setSearch }) {
           type="text"
           placeholder="Search for products, brands and more"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearchChange(e.target.value)}
         />
       </div>
  
