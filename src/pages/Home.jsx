@@ -1,13 +1,9 @@
 import products from "../data/products";
 import ProductCard from "../components/ProductCard/ProductCard";
+import { useFilteredProducts } from "../hooks/useSearch";
  
 function Home({ search }) {
- 
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase()) ||
-    product.brand.toLowerCase().includes(search.toLowerCase()) ||
-    product.category.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredProducts = useFilteredProducts(products, search);
  
   return (
     <div

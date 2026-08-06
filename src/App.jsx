@@ -1,18 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
- 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 
 function App() {
-  const [search, setSearch] = useState("");
- 
+  const { search, setSearch, clearSearch } = useSearchQuery("");
+
   return (
     <>
-      <Navbar search={search} setSearch={setSearch} />
- 
+      <Navbar search={search} setSearch={setSearch} clearSearch={clearSearch} />
+
       <Routes>
         <Route path="/" element={<Home search={search} />} />
         <Route path="/product/:id" element={<ProductDetails />} />
@@ -21,5 +19,5 @@ function App() {
     </>
   );
 }
- 
+
 export default App;
