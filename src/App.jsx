@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useSearchQuery } from "./hooks/useSearch";
  
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 
 function App() {
-  const [search, setSearch] = useState("");
+  const { search, setSearch } = useSearchQuery("");
  
   return (
     <>
