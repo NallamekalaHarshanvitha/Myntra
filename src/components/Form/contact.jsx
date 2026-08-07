@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import './contact.css';
 
+const initialState = {
+  name: '',
+  email: '',
+  contact: ''
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'FIELD':
+      return { ...state, [action.field]: action.value };
+    case 'RESET':
+      return initialState;
+    default:
+      return state;
+  }
+}
+
 function ContactForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   function submit(e) {
     e.preventDefault();
+    // handle submission (e.g., send to API)
+    console.log('Submitted', state);
+    dispatch({ type: 'RESET' });
   }
 
   return (
@@ -19,8 +37,8 @@ function ContactForm() {
         Name
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={state.name}
+          onChange={(e) => dispatch({ type: 'FIELD', field: 'name', value: e.target.value })}
           placeholder="Enter your name"
           required
         />
@@ -30,8 +48,8 @@ function ContactForm() {
         Email
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={state.email}
+          onChange={(e) => dispatch({ type: 'FIELD', field: 'email', value: e.target.value })}
           placeholder="Enter your email"
           required
         />
@@ -41,8 +59,8 @@ function ContactForm() {
         Contact
         <input
           type="tel"
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
+          value={state.contact}
+          onChange={(e) => dispatch({ type: 'FIELD', field: 'contact', value: e.target.value })}
           placeholder="Enter your phone number"
           required
         />

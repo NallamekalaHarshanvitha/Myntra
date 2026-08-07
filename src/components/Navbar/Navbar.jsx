@@ -1,11 +1,17 @@
 import "./Navbar.css";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
  
 function Navbar({ search, setSearch }) {
   const searchInputRef = useRef(null);
-  const focusSearchInput = () => searchInputRef.current?.focus();
+  const navigate = useNavigate();
+  const applySearch = () => {
+    if (searchInputRef.current) {
+      setSearch(searchInputRef.current.value);
+      navigate("/");
+    }
+  };
  
   return (
     <nav className="navbar">
@@ -93,7 +99,7 @@ function Navbar({ search, setSearch }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="button" className="search-focus-btn" onClick={focusSearchInput}>
+        <button type="button" className="search-focus-btn" onClick={applySearch}>
           Search
         </button>
       </div>

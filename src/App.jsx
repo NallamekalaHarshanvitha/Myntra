@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
+import Men from "./pages/Men";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 import { useSearchQuery } from "./hooks/useSearch";
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home search={search} />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/men" element={<Men search={search} />} />
       </Routes>
     </>
   );
