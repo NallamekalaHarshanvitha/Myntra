@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
+import { useSearchQuery } from "./hooks/useSearch";
 
 function App() {
   const { search, setSearch, clearSearch } = useSearchQuery("");
