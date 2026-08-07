@@ -2,6 +2,7 @@ import "./Navbar.css";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
+import { useWishlist } from '../../context/WishlistContext';
  
 function Navbar({ search, setSearch }) {
   const searchInputRef = useRef(null);
@@ -12,6 +13,7 @@ function Navbar({ search, setSearch }) {
       navigate("/");
     }
   };
+  const { items: wishlistItems } = useWishlist();
  
   return (
     <nav className="navbar">
@@ -114,8 +116,10 @@ function Navbar({ search, setSearch }) {
         </div>
  
         <div className="icon">
-          <FaHeart />
-          <span>Wishlist</span>
+          <Link to="/wishlist" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <FaHeart />
+            <span>Wishlist {wishlistItems && wishlistItems.length > 0 ? `(${wishlistItems.length})` : ''}</span>
+          </Link>
         </div>
  
         <div className="icon">
