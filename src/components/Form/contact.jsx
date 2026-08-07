@@ -8,7 +8,6 @@ function ContactForm() {
 
   function submit(e) {
     e.preventDefault();
-    alert(`Name: ${name}\nEmail: ${email}\nContact: ${contact}`);
   }
 
   return (
