@@ -1,8 +1,12 @@
 import "./Navbar.css";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
  
 function Navbar({ search, setSearch }) {
+  const searchInputRef = useRef(null);
+  const focusSearchInput = () => searchInputRef.current?.focus();
+ 
   return (
     <nav className="navbar">
  
@@ -83,11 +87,15 @@ function Navbar({ search, setSearch }) {
       <div className="search-box">
         <FaSearch />
         <input
+          ref={searchInputRef}
           type="text"
           placeholder="Search for products, brands and more"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+        <button type="button" className="search-focus-btn" onClick={focusSearchInput}>
+          Search
+        </button>
       </div>
  
       <div className="icons">
