@@ -7,7 +7,6 @@ import Men from "./pages/Men";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 import Wishlist from "./pages/Wishlist";
-import { useSearchQuery } from "./hooks/useSearch";
 import { WishlistProvider } from "./context/WishlistContext";
 
 function App() {
