@@ -99,7 +99,7 @@ function Navbar({ search, setSearch }) {
           type="text"
           placeholder="Search for products, brands and more"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearchChange(e.target.value)}
         />
         <button type="button" className="search-focus-btn" onClick={applySearch}>
           Search

@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { useSearchQuery } from "./hooks/useSearch";
+ 
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import Men from "./pages/Men";
@@ -9,6 +11,7 @@ import { useSearchQuery } from "./hooks/useSearch";
 import { WishlistProvider } from "./context/WishlistContext";
 
 function App() {
+ 
   const { search, setSearch, clearSearch } = useSearchQuery("");
 
   return (
