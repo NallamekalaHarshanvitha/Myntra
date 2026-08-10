@@ -16,7 +16,7 @@ export function WishlistProvider({ children }) {
     try {
       localStorage.setItem('wishlist', JSON.stringify(items));
     } catch (e) {
-      // ignore
+      console.error('Failed to save wishlist to localStorage', e);
     }
   }, [items]);
 
