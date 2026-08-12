@@ -7,6 +7,11 @@ import { useWishlist } from '../../context/WishlistContext';
 function Navbar({ search, setSearch }) {
   const searchInputRef = useRef(null);
   const navigate = useNavigate();
+
+  const handleSearchChange = (value) => {
+    setSearch(value);
+  };
+
   const applySearch = () => {
     if (searchInputRef.current) {
       setSearch(searchInputRef.current.value);

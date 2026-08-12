@@ -1,8 +1,10 @@
+import { useOutletContext } from "react-router-dom";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard/ProductCard";
 import { useFilteredProducts } from "../hooks/useSearch";
 
-function Men({ search }) {
+function Men() {
+  const { search = "" } = useOutletContext();
   const filteredProducts = useFilteredProducts(products, search);
   const menProducts = filteredProducts.filter(
     (product) => product.category === "Men"
