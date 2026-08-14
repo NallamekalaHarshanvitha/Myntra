@@ -1,17 +1,24 @@
 import "./Navbar.css";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
+import { useWishlist } from '../../context/WishlistContext';
  
 function Navbar({ search, setSearch }) {
+  const searchInputRef = useRef(null);
   const navigate = useNavigate();
-  const location = useLocation();
- 
+
   const handleSearchChange = (value) => {
     setSearch(value);
-    if (location.pathname !== "/") {
+  };
+
+  const applySearch = () => {
+    if (searchInputRef.current) {
+      setSearch(searchInputRef.current.value);
       navigate("/");
     }
   };
+  const { items: wishlistItems } = useWishlist();
  
   return (
     <nav className="navbar">
@@ -93,23 +100,31 @@ function Navbar({ search, setSearch }) {
       <div className="search-box">
         <FaSearch />
         <input
+          ref={searchInputRef}
           type="text"
           placeholder="Search for products, brands and more"
           value={search}
           onChange={(e) => handleSearchChange(e.target.value)}
         />
+        <button type="button" className="search-focus-btn" onClick={applySearch}>
+          Search
+        </button>
       </div>
  
       <div className="icons">
  
         <div className="icon">
-          <FaUser />
-          <span>Profile</span>
+          <Link to="/profile" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: "8px" }}>
+            <FaUser />
+            <span>Profile</span>
+          </Link>
         </div>
  
         <div className="icon">
-          <FaHeart />
-          <span>Wishlist</span>
+          <Link to="/wishlist" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <FaHeart />
+            <span>Wishlist {wishlistItems && wishlistItems.length > 0 ? `(${wishlistItems.length})` : ''}</span>
+          </Link>
         </div>
  
         <div className="icon">

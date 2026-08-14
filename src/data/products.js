@@ -25,7 +25,7 @@ const products = [
     id: 3,
     brand: "Levis",
     name: "Blue Jeans",
-    category: "Men",
+    category: "Women",
     price: 1999,
     image: levi
   },

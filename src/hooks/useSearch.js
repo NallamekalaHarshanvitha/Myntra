@@ -22,7 +22,7 @@ export function useFilteredProducts(products, searchTerm) {
       return (
         name.includes(query) ||
         brand.includes(query) ||
-        category.includes(query)
+        category === query
       );
     });
   }, [products, searchTerm]);
