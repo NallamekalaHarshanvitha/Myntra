@@ -1,17 +1,23 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useSearchQuery } from "./hooks/useSearch";
- 
+import { useSelector } from "react-redux";
+import { useAppSearch } from "./hooks/useAppSearch";
+
 import Navbar from "./components/Navbar/Navbar";
-import { WishlistProvider } from "./context/WishlistContext";
 
 function App() {
-  const { search, setSearch, clearSearch } = useSearchQuery("");
+  const { search, setSearch, clearSearch } = useAppSearch();
+  const wishlistItems = useSelector((state) => state.wishlist.items);
+
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
+  }, [wishlistItems]);
 
   return (
-    <WishlistProvider>
+    <>
       <Navbar search={search} setSearch={setSearch} clearSearch={clearSearch} />
       <Outlet context={{ search, setSearch, clearSearch }} />
-    </WishlistProvider>
+    </>
   );
 }
 

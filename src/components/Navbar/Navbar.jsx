@@ -2,7 +2,7 @@ import "./Navbar.css";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from "react-icons/fa";
-import { useWishlist } from '../../context/WishlistContext';
+import { useWishlist } from '../../hooks/useWishlist';
  
 function Navbar({ search, setSearch }) {
   const searchInputRef = useRef(null);

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
-import { useWishlist } from '../../context/WishlistContext';
+import { useWishlist } from '../../hooks/useWishlist';
 
 function ProductCard({ product }) {
   const navigate = useNavigate();

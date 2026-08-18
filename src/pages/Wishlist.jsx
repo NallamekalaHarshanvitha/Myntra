@@ -1,5 +1,5 @@
 import React from 'react';
-import { useWishlist } from '../context/WishlistContext';
+import { useWishlist } from '../hooks/useWishlist';
 
 function Wishlist() {
   const { items, remove, clear } = useWishlist();
